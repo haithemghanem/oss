@@ -1,0 +1,105 @@
+#dv-mod.dv-module-main{
+    background-color:#a7a7a7;
+    padding: 25px 25px;
+}
+#dv-mod h2{
+    margin-bottom: 17px;
+    display:inline-block;
+}
+.dv-pop-card{
+	padding: 15px;
+    margin-bottom:9px;
+    font-size: 14px !important;
+    line-height:25px;
+	background-color:#e0e0e0;
+    border-radius:19px;
+    position:relative;
+}
+.dv-pop-card:hover{
+	background-color:#d3d0d0;
+}
+.dv-pop-card:hover .sp-tool2{
+	visibility:visible;
+}
+.dv-pop-card .entry-title{
+	min-width:90px;
+    display:inline-block;
+    vertical-align: top;
+}
+.dv-pop-card .entry-value{
+	font-weight:bold;
+    white-space:normal;
+    vertical-align: top;
+    display:inline-block;
+}
+.dv-pop-card .sp-tool2 {
+    display:inline-block;
+	margin: 0 0 -6px 7px;
+    width:20px;
+    height:20px;
+	background-size: 20px 20px;
+    cursor:pointer;
+    visibility:hidden;
+    border:1px solid #999;
+}
+.dv-pop-card .sp-tool2:hover {
+    background-color:#a9a9a9;
+    border:1px solid #555;
+}
+.dv-pop-card .sp-edt2 {
+    background-image:url('res/edt02.png');
+}
+.dv-pop-card .sp-del2 {
+    background-image:url('res/del02.png');
+}
+.dv-pop-card .sp-notes {
+    width:48px;
+    height:48px;
+	background-size: 48px 48px;
+    background-image:url('res/notes03a.png');
+}
+.dv-pop-card .sp-adduser {
+    background-image:url('res/star02.png');
+}
+input[type="checkbox"].chk-all-usr{
+	margin: 0 5px 0 17px;
+	cursor:pointer;
+}
+.dv-col2 label{
+	display:inline-block;
+	cursor:pointer;
+}
+.dv-col2 label:hover{
+	background-color:#a9a9a9;
+}
+.sp-add {
+    display:inline-block;
+    width:25px;
+    height:25px;
+    cursor:pointer;
+    background-image:url('res/star02.png');
+    position:relative;
+    top:4px;
+    border:1px solid #999;
+}
+.sp-add:hover {
+    background-color:#bbb;
+    border:1px solid #454545;
+}
+.dv-pop-card .dv-col1 {
+    float:left;
+	width:45%;
+    padding-right:15px;
+}
+.dv-pop-card .dv-col2 {
+    float:right;
+	width:45%;
+    padding-left:15px;
+}
+.cmb-users{
+    width:85%;
+    height:115px !important;
+}
+.cmb-users:disabled{
+    background-color:#d9d9d9;
+}

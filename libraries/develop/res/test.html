@@ -1,0 +1,199 @@
+<html>
+<head>
+<style>
+    body{
+        font-family: 'Open Sans', 'Lucida Grande', Verdana, Tahoma, Arial, sans-serif !important;
+        font-size: 12px !important;
+        background: #ffffff;
+        color: #2b2b2b;
+    }
+#dv-mod.dv-module-main{
+    background-color:#a7a7a7;
+    padding: 25px 25px;
+}
+#dv-mod h2{
+    margin-bottom: 17px;
+    display:inline-block;
+}
+.dv-pop-card{
+	padding: 15px;
+    margin-bottom:9px;
+    font-size: 14px !important;
+    line-height:25px;
+	background-color:#e0e0e0;
+    border-radius:19px;
+    position:relative;
+}
+.dv-pop-card:hover{
+	background-color:#d3d0d0;
+}
+.dv-pop-card:hover .sp-tool2{
+	visibility:visible;
+}
+.dv-pop-card .entry-title{
+	min-width:90px;
+    display:inline-block;
+    vertical-align: top;
+}
+.dv-pop-card .entry-value{
+	font-weight:bold;
+    white-space:normal;
+    vertical-align: top;
+}
+.dv-pop-card .sp-tool2 {
+    display:inline-block;
+	margin: 0 0 -6px 7px;
+    width:20px;
+    height:20px;
+	background-size: 20px 20px;
+    cursor:pointer;
+    visibility:hidden;
+    border:1px solid #999;
+}
+.dv-pop-card .sp-tool2:hover {
+    background-color:#a9a9a9;
+    border:1px solid #555;
+}
+.dv-pop-card .sp-edt2 {
+    background-image:url('res/edt02.png');
+}
+.dv-pop-card .sp-del2 {
+    background-image:url('res/del02.png');
+}
+.dv-pop-card .sp-adduser {
+    background-image:url('res/star02.png');
+}
+input[type="checkbox"].chk-all-usr{
+	margin: 0 5px 0 17px;
+	cursor:pointer;
+}
+.dv-col2 label{
+	display:inline-block;
+	cursor:pointer;
+}
+.dv-col2 label:hover{
+	background-color:#a9a9a9;
+}
+.sp-add {
+    display:inline-block;
+    width:25px;
+    height:25px;
+    cursor:pointer;
+    background-image:url('res/star02.png');
+    position:relative;
+    top:6px;
+    border:1px solid #999;
+}
+.sp-add:hover {
+    background-color:#bbb;
+    border:1px solid #454545;
+}
+.dv-pop-card .dv-col1 {
+    float:left;
+	width:45%;
+    padding-right:15px;
+}
+.dv-pop-card .dv-col2 {
+    float:right;
+	width:45%;
+    padding-left:15px;
+}
+.cmb-users{
+    width:85%;
+    height:115px !important;
+}
+.cmb-users:disabled{
+    background-color:#d9d9d9;
+}
+</style>
+
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery-ui.js"></script>
+<link rel="stylesheet" href="jquery-ui.css" type="text/css" media="screen" />
+
+
+</head>
+<body>
+<div id="dv-mod" class="dv-module-main">
+    <h2>Popup Notification:</h2>
+    <span class="sp-add" title="Create New"></span>
+	<script type="text/javascript">
+		function chkAllUsers_Click(chk, sfx){
+			$("#cmbUsers" + sfx).prop('disabled', chk.checked);
+		}
+	</script>
+    <div class="dv-pop-card">
+        <div class="dv-col1">
+            <span class="entry-title">Popup ID: </span>
+            <span class="entry-value">429</span>
+            <span class="sp-tool2 sp-edt2" title="Edit"></span>
+            <span class="sp-tool2 sp-del2" title="Delete"></span>
+            <br />
+            <span class="entry-title">Title: </span>
+            <span class="entry-value">—”«·… ‘ﬂ—</span>
+            <br />
+            <span class="entry-title">Message: </span>
+            <span class="entry-value">”Ì»œ√ «·⁄„· »«·‰Ÿ«„ «·ÃœÌœ «» œ«¡ „‰  «—ÌŒ 1/10/2017</span>
+            <br />
+            <span class="entry-title">Date: </span>
+            <span class="entry-value">2017/08/05</span>
+            <br />
+            <span class="entry-title">Minutes Repeat: </span>
+            <span class="entry-value">5</span>
+            <br />
+        </div>
+        <div class="dv-col2">
+            Users:
+            <span class="sp-tool2 sp-adduser" title="Add User"></span>
+            <span class="sp-tool2 sp-del2" title="Delete Selected Users"></span>
+			<input type="checkbox" id="chkAllUsers1" class="chk-all-usr" onclick="chkAllUsers_Click(this, 1);" /><label for="chkAllUsers1">All Users</label>
+			<br/>
+            <select id="cmbUsers1" class="cmb-users" multiple="true">
+                <option value="1">mhd</option>
+                <option value="2">abd</option>
+                <option value="3">saleh</option>
+                <option value="4">masa</option>
+            </select>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="dv-pop-card">
+        <div class="dv-col1">
+            <span class="entry-title">Popup ID: </span>
+            <span class="entry-value">429</span>
+            <span class="sp-tool2 sp-edt2" title="Edit"></span>
+            <span class="sp-tool2 sp-del2" title="Delete"></span>
+            <br />
+            <span class="entry-title">Title: </span>
+            <span class="entry-value">—”«·… ‘ﬂ—</span>
+            <br />
+            <span class="entry-title">Message: </span>
+            <span class="entry-value">”Ì»œ√ «·⁄„· »«·‰Ÿ«„ «·ÃœÌœ «» œ«¡ „‰  «—ÌŒ 1/10/2017 ”Ì»œ√ «·⁄„· »«·‰Ÿ«„ «·ÃœÌœ «» œ«¡ „‰  «—ÌŒ 1/10/2017 ”Ì»œ√ «·⁄„· »«·‰Ÿ«„ «·ÃœÌœ «» œ«¡ „‰  «—ÌŒ 1/10/2017</span>
+            <br />
+            <span class="entry-title">Date: </span>
+            <span class="entry-value">2017/08/05</span>
+            <br />
+            <span class="entry-title">Minutes Repeat: </span>
+            <span class="entry-value">5</span>
+            <br />
+        </div>
+        <div class="dv-col2">
+            Users:
+            <span class="sp-tool2 sp-adduser" title="Add User"></span>
+            <span class="sp-tool2 sp-del2" title="Delete Selected Users"></span>
+			<input type="checkbox" id="chkAllUsers2" class="chk-all-usr" onclick="chkAllUsers_Click(this, 2);" /><label for="chkAllUsers2">All Users</label>
+            <br/>
+			<select id="cmbUsers2" class="cmb-users" multiple="true">
+                <option value="1">mhd</option>
+                <option value="2">abd</option>
+                <option value="3">saleh</option>
+                <option value="4">masa</option>
+            </select>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div style="background-color:#999; width: 250px; height:3000px;">AAA BBB CCC</div>
+</div>
+</body>
+</html>
