@@ -1,4 +1,0 @@
-ostorah.solutions-time.com
-db=solution_ostorah
-udb=solution_ostorah
-udbp=EZ?rOqv!)ppO

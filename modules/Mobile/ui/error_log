@@ -1,1 +1,0 @@
-[08-Jan-2019 07:20:57 UTC] PHP Fatal error:  Class 'Mobile_WS_Controller' not found in /home/solution/public_html/vtiger/modules/Mobile/api/ws/Login.php on line 10
