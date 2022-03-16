@@ -13,7 +13,7 @@
  * Start the cron services configured.
  */
  
-echo "enter";
+ 
 include_once 'vtlib/Vtiger/Cron.php';
 require_once 'config.inc.php';
 require_once('modules/Emails/mail.php');
@@ -41,8 +41,9 @@ if($php <  50300){
 
 $mailbody ="Instance dir : $root_directory <br/> Company Name : $organization_name <br/> Site Url : $site_URL <br/> Host Name : $hostName<br/>";
 $mailSubject = "[Alert] $organization_name ";
-if(PHP_SAPI==="cli" || PHP_SAPI==="cgi-fcgi"  || PHP_SAPI==="fpm-fcgi"  || (isset($_SESSION["authenticated_user_id"]) &&	isset($_SESSION["app_unique_key"]) && $_SESSION["app_unique_key"] == $application_unique_key)){
-    
+if(PHP_SAPI==="cli" || PHP_SAPI==="cgi-fcgi"  || (isset($_SESSION["authenticated_user_id"]) &&	isset($_SESSION["app_unique_key"]) && $_SESSION["app_unique_key"] == $application_unique_key)){
+
+
 	$cronTasks = false;
 	if (isset($_REQUEST['service'])) {
 		// Run specific service
@@ -98,8 +99,7 @@ if(PHP_SAPI==="cli" || PHP_SAPI==="cgi-fcgi"  || PHP_SAPI==="fpm-fcgi"  || (isse
 	echo sprintf('[CRON],"%s",%s,Instance,"%s","%s",[ENDS]',$cronRunId,$site_URL,$cronStarts,$cronEnds)."\n";
 
 } else {
-	echo "Access denied1!";
-	
+	echo("Access denied!");
 }
 
 

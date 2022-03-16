@@ -9,7 +9,7 @@
 
 # ********************************************************************************
 
-wget https://alostora.net/vtigercron.php -o /home/solution/public_html/vtiger/log/cronlog.txt
+wget http://crm.solutions-time.com/vtigercron.php -o /home/solution/public_html/vtiger/log/cronlog.txt
 
 export VTIGERCRM_ROOTDIR=`dirname "$0"`/..
 export USE_PHP=php

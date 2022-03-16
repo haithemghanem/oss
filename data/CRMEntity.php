@@ -290,7 +290,8 @@ class CRMEntity {
 			$acl = Vtiger_AccessControl::loadUserPrivileges($current_user->id);
 			if ($acl->is_admin == true || $acl->profileGlobalPermission[1] == 0 || $acl->profileGlobalPermission[2] == 0 || $this->isWorkFlowFieldUpdate) {
 				$sql = "update vtiger_crmentity set smownerid=?, smgroupid=?,modifiedby=?,description=?, modifiedtime=? where crmid=?";
-				$params = array($ownerid, $groupid, $current_user->id, $description_val, $adb->formatDate($date_var, true), $this->id);
+			    $params = array($ownerid, $groupid, $current_user->id, $description_val, $adb->formatDate($date_var, true), $this->id);
+			    
 			} else {
 				$profileList = getCurrentUserProfileList();
 				$perm_qry = "SELECT columnname FROM vtiger_field INNER JOIN vtiger_profile2field ON vtiger_profile2field.fieldid = vtiger_field.fieldid INNER JOIN vtiger_def_org_field ON vtiger_def_org_field.fieldid = vtiger_field.fieldid WHERE vtiger_field.tabid = ? AND vtiger_profile2field.visible = 0 AND vtiger_profile2field.readonly = 0 AND vtiger_profile2field.profileid IN (" . generateQuestionMarks($profileList) . ") AND vtiger_def_org_field.visible = 0 and vtiger_field.tablename='vtiger_crmentity' and vtiger_field.displaytype in (1,3) and vtiger_field.presence in (0,2);";
@@ -303,13 +304,50 @@ class CRMEntity {
 					$sql = "update vtiger_crmentity set smownerid=?, smgroupid=?, modifiedby=?,description=?, modifiedtime=? where crmid=?";
 					$params = array($ownerid, $groupid, $current_user->id, $description_val, $adb->formatDate($date_var, true), $this->id);
 				} else {
-					$sql = "update vtiger_crmentity set smownerid=?, smgroupid=?,modifiedby=?, modifiedtime=? where crmid=?";
-					$params = array($ownerid, $groupid, $current_user->id, $adb->formatDate($date_var, true), $this->id);
+				     
+				     $dec =  $this->column_fields['modifiedby']."_".$current_user->id;
+				    if(isset($_REQUEST['action']) &&  $_REQUEST['action'] = "MassEditSave" && ( ($current_user->id == 1 &&  $current_user->id  != $ownerid ) || ($this->column_fields['modifiedby']== $current_user->id  && $current_user->id==1 &&  $current_user->id  != $ownerid ) ) ){
+				        $dec .="_".$_REQUEST['user_mess_update']."_*_".$_SESSION['authenticated_user_id'];
+				        $_user_id=$ownerid;
+				    
+				        $sql = "update vtiger_crmentity set smownerid=?, smgroupid=?,modifiedby=?, modifiedtime=?   where crmid=?";
+					    $params = array($ownerid, $groupid,$_user_id, $adb->formatDate($date_var, true),$this->id);
+					
+				    }else{
+				        
+				        $sql = "update vtiger_crmentity set smownerid=?, smgroupid=?,modifiedby=?, modifiedtime=?  where crmid=?";
+					   $params = array($ownerid, $groupid, $current_user->id , $adb->formatDate($date_var, true),$this->id);
+				       
+				    }
+				    
+				        
+				     
+				    
+				    
+				    
+				    // if($this->column_fields['modifiedby'] != $current_user->id ){
+				    //     $sql = "update vtiger_crmentity set smownerid=?, smgroupid=?,modifiedby=?, modifiedtime=? ,description=?  where crmid=?";
+					   // $params = array($ownerid, $groupid, $current_user->id, $adb->formatDate($date_var, true),$dec ,  $this->id);
+				    // }else{
+				        
+				    // }
+				    
+				    //$sql = "update vtiger_crmentity set smownerid=?, smgroupid=?,modifiedby=?, modifiedtime=? , description=?  where crmid=?";
+					//$params = array($ownerid, $groupid, $current_user->id, $adb->formatDate($date_var, true),$dec,$this->id); 
+				    
+				    
+				    
+				//     $sql = "update vtiger_crmentity set smownerid=?, smgroupid=?,modifiedby=?, modifiedtime=? where crmid=?";
+				// 	$params = array($ownerid, $groupid, $current_user->id, $adb->formatDate($date_var, true), $this->id);
+				    
+					
+					//$current_user->id
 				}
 			}
 			$adb->pquery($sql, $params);
 			$this->column_fields['modifiedtime'] =  $modified_date_var;
-			$this->column_fields['modifiedby'] = $current_user->id;
+			$this->column_fields['modifiedby'] =$current_user->id; //$current_user->id;
+			
 		} else {
 			//if this is the create mode and the group allocation is chosen, then do the following
 			$current_id = $adb->getUniqueID("vtiger_crmentity");

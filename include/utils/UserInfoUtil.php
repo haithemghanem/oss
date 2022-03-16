@@ -299,16 +299,21 @@ function isPermitted($module,$actionname,$record_id='')
 	    return $permission;
 	}
 	
-	//adding by HG 2021-02-14
-	if($module == 'Vendors' && ($actionname == "EditView" || $actionname == "Save" ) && !empty($record_id) &&   !$is_admin &&  $current_user->id !=1 )
-	{
+	if($module == 'Invoice' && $actionname == "Delete" ){
+	    //Delete
 	    $permission ="no";
-		return $permission;
+	    return $permission;
 	}
 	
-	if($module == 'Invoice' && ($actionname == "EditView" || $actionname == "Save" ) && !empty($record_id) &&   !$is_admin &&  $current_user->id !=1 )
+	
+	
+	if($module == 'Invoice' && ($actionname == "EditView" || $actionname == "Save" ) && !empty($record_id) &&   !$is_admin  &&  $current_user->id !=1)
 	{  
-        //2020/12/23  ,  Received , Not Received
+        //2020/12/23  ,  Received , Not Received , 
+        
+        
+        
+            
         $status= ""; //and  NOT IN('Received' , Not Received) and cf_991 !=null
         $query="select cf_991 from vtiger_invoicecf where invoiceid = ? ";
 		$result=$adb->pquery($query, array($record_id));
@@ -322,59 +327,22 @@ function isPermitted($module,$actionname,$record_id='')
 		if(empty($recordOwnerArr)){
 			// $groupId = getRecordGroupId($record_id);
 			// $recordOwnerArr['Groups'] = $groupId;
-		}else{
-         
-           foreach($recordOwnerArr as $type=>$id)
-		  {
-			$recOwnType=$type;
-			$recOwnId=$id;
-		  }
-             $uh_id=$current_user->id;
-			if($recOwnId == $uh_id  && $status=="Create"){
-                //$permission ="yes";
-			    //return $permission;
-			}else{
-			    
-                $permission ="no";
-			    return $permission;
 			
-			}
-		}
-	}
-	
-	if($module == 'Invoice' && ($actionname == "PrintInv") && !empty($record_id) &&   !$is_admin &&  $current_user->id !=1 )
-	{  
-        //2020/12/23  ,  Received , Not Received
-        $status= ""; //and  NOT IN('Received' , Not Received) and cf_991 !=null
-         //cf_999
-		$recOwnType='';
-		$recOwnId='';
-		
-		$status= "0"; //and  NOT IN('Received' , Not Received) and cf_991 !=null
-        $query="select cf_999 from vtiger_invoicecf where invoiceid = ? ";
-		$result=$adb->pquery($query, array($record_id));
-		if($adb->num_rows($result) > 0)
-		{
-			$status=$adb->query_result($result,0,'cf_999');
-		}
-		$recordOwnerArr=getRecordOwnerId($record_id);
-		if(empty($recordOwnerArr)){
-			// $groupId = getRecordGroupId($record_id);
-			// $recordOwnerArr['Groups'] = $groupId;
+			
 		}else{
-         
+		    
            foreach($recordOwnerArr as $type=>$id)
 		  {
 			$recOwnType=$type;
 			$recOwnId=$id;
 		  }
-             $uh_id=$current_user->id;
-			if($recOwnId == $uh_id  ){
-                $permission ="yes";
-			    return $permission;
-			}elseif($status == 1){
+		 
+			$uh_id=$current_user->id;
+			if($recOwnId == $uh_id  && $status=="Create"){
+			    
 			    $permission ="yes";
-			    return $permission;
+                return $permission;
+                
 			}else{
 			    
                 $permission ="no";

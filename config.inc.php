@@ -13,18 +13,8 @@
  * Contributor(s): ______________________________________.
 ********************************************************************************/
 
-
-ini_set('display_errors', 0);
-ini_set('display_startup_errors', 0);
-error_reporting(0);
-
-error_reporting(-1);
-
-// Same as error_reporting(E_ALL);
-//ini_set('error_reporting', 0);
-
 // Adjust error_reporting favourable to deployment.
-//version_compare(PHP_VERSION, '5.5.0') <= 0 ? error_reporting(E_WARNING & ~E_NOTICE & ~E_DEPRECATED & E_ERROR) : error_reporting(E_WARNING & ~E_NOTICE & ~E_DEPRECATED  & E_ERROR & ~E_STRICT); // PRODUCTION
+version_compare(PHP_VERSION, '5.5.0') <= 0 ? error_reporting(E_WARNING & ~E_NOTICE & ~E_DEPRECATED & E_ERROR) : error_reporting(E_WARNING & ~E_NOTICE & ~E_DEPRECATED  & E_ERROR & ~E_STRICT); // PRODUCTION
 //ini_set('display_errors','on'); version_compare(PHP_VERSION, '5.5.0') <= 0 ? error_reporting(E_WARNING & ~E_NOTICE & ~E_DEPRECATED) : error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);   // DEBUGGING
 //ini_set('display_errors','on'); error_reporting(E_ALL); // STRICT DEVELOPMENT
 
@@ -44,7 +34,7 @@ $CHAT_DISPLAY = 'true';
 $USE_RTE = 'true';
 
 // helpdesk support email id and support name (Example: 'support@vtiger.com' and 'vtiger support')
-$HELPDESK_SUPPORT_EMAIL_ID = 'support@solutions-time.com';
+$HELPDESK_SUPPORT_EMAIL_ID = 'hathemhamoud@gmail.com';
 $HELPDESK_SUPPORT_NAME = 'support Solutions time';
 $HELPDESK_SUPPORT_EMAIL_REPLY_ID = $HELPDESK_SUPPORT_EMAIL_ID;
 
@@ -87,11 +77,11 @@ $host_name = $dbconfig['db_hostname'];
 
 //$site_URL = 'https://vt7.solutions-time.com/';
 
-$site_URL = 'http://localhost/oss/';//192.168.8.111
+$site_URL = 'http://localhost/ostorah/';//192.168.8.111
 // url for customer portal (Example: http://vtiger.com/portal)
-$PORTAL_URL = '/home1/zmnalhul/public_html/oss/';
+$PORTAL_URL = 'C:/wamp/www/ostorah/';
 // root directory path
-$root_directory = 'C:/wamp64/www/oss/';
+$root_directory = 'C:/wamp64/www/ostorah/';
 
 // cache direcory path
 $cache_dir = 'cache/';
